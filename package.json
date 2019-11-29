@@ -1,0 +1,25 @@
+{
+  "name": "chores",
+  "version": "1.0.0",
+  "description": "Task runner module for front-end workflows",
+  "main": "dist/chores.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Junmar Jose <junmar.jose@bayviewtechnology.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.12.9",
+    "typescript": "^3.7.2"
+  },
+  "bin": {
+    "chores": "./bin/chores"
+  },
+  "dependencies": {
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1"
+  }
+}

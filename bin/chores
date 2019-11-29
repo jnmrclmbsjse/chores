@@ -1,0 +1,170 @@
+#!/bin/bash
+USAGE="Usages: 
+    chores <command>                            Installed globally
+    bin/chores <command>                        Directly from library directory
+    ./node_modules/.bin/chores <command>        Installed as package
+
+Available commands:
+    init            Requires <type> ('frontend' || 'backend') argument then creates basic config file
+                    and chores folder with default chores in current directory; 
+                    e.g 'chores init frontend'
+    generate        Requires <key> argument to generate a chore; e.g. 'chores generate transform-key'
+    list            Displays the current list of chores
+    help            Displays this help message"
+
+if [ -z "$1" ]
+then
+    echo "  ____ _   _  ___  ____  _____ ____  
+ / ___| | | |/ _ \|  _ \| ____/ ___| 
+| |   | |_| | | | | |_) |  _| \___ \ 
+| |___|  _  | |_| |  _ <| |___ ___) |
+ \____|_| |_|\___/|_| \_\_____|____/ 
+                                     ";
+    printf "Chores version 1.0.0 2019-11-20 19:44\n";
+    echo "$USAGE";
+else
+    case "$1" in
+    "init")
+        if [ -f "./.gitignore" ]
+        then
+            echo "
+chores_combined.log
+chores_error.log" >> ".gitignore"
+        fi
+        if [ -z "$2" ]
+        then
+            echo "chores: Please specify init type"
+        else
+            type=$2
+            case "$type" in
+            "frontend")
+                mkdir -p chores
+                if [ -d "./resources" ]
+                then
+                    cp ./resources/* ./chores
+                    echo "module.exports = {
+    \"jobs\": [
+        \"default\",
+        \"http\",
+        \"mutate\",
+        \"redirect\"
+    ]
+};" > chrscnf.js
+    echo "
+Default files and folders were now created. 
+You can now start using Chores.
+See \"chores help\" for the list of available commands.
+Happy coding!
+";
+                else
+                    if [ -d "./node_modules/chores/resources" ]
+                    then
+                        cp ./node_modules/chores/resources/* ./chores
+                        echo "module.exports = {
+    \"jobs\": [
+        \"default\",
+        \"http\",
+        \"mutate\",
+        \"redirect\"
+    ]
+};" > chrscnf.js
+    echo "
+Default files and folders were now created. 
+You can now start using Chores.
+See \"chores help\" for the list of available commands.
+Happy coding!
+";
+                    else
+                        echo "chores: Unable to initialize, are you sure you are in the root folder?"
+                    fi
+                fi
+                ;;
+            "backend")
+                mkdir -p chores
+                if [ -d "./resources" ]
+                then
+                    cp ./resources/* ./chores
+                    echo "module.exports = {
+    \"jobs\": [
+        \"default\",
+        \"http\",
+        \"mutate\",
+        \"redirect\"
+    ]
+};" > .choresrc
+    echo "
+Default files and folders were now created. 
+You can now start using Chores.
+See \"chores help\" for the list of available commands.
+Happy coding!
+";
+                else
+                    if [ -d "./node_modules/chores/resources" ]
+                    then
+                        cp ./node_modules/chores/resources/* ./chores
+                        echo "module.exports = {
+    \"jobs\": [
+        \"default\",
+        \"http\",
+        \"mutate\",
+        \"redirect\"
+    ]
+};" > .choresrc
+    echo "
+Default files and folders were now created. 
+You can now start using Chores.
+See \"chores help\" for the list of available commands.
+Happy coding!
+";
+                    else
+                        echo "chores: Unable to initialize, are you sure you are in the root folder?"
+                    fi
+                fi
+                ;;
+            *)
+                echo "chores: '$type' is not an init type"
+                ;;
+            esac
+        fi;
+    ;;
+    "generate")
+        if [ -z "$2" ]
+        then
+            echo "chores: Please specify job key"
+        else
+            jobname=$2
+            echo "/*jshint esversion: 6 */
+module.exports = {
+    key: \"$jobname\",
+    description: \"new job\",
+    fun: (request, response, callback) => {
+        const options = request.options;
+        const receiver = request.receiver;
+        const name = request.name;
+        console.log(\"Hello world!\");
+        // assign data to the receiver variable
+        // callback.assign(data, key, variables, name)
+        callback.resolve();
+        // or to halt the runner
+        // callback.reject();
+    }
+};" > chores/$jobname.js
+            echo "chores: '$2' job has been added. 
+Please define it in your .choresrc or chrscnf.js file if you want to use it.
+"
+        fi
+        ;;
+    "list")
+        dir chores
+        ;;
+    "help")
+        echo "
+$USAGE"
+        ;;
+    *)
+        echo "chores: '$1' is not a chores command
+
+$USAGE"
+        ;;
+    esac
+fi
