@@ -1,6 +1,6 @@
 # Workflows
 
-Workflows are collections of steps or what we called chores. These steps are being executed in sequence using [Chores](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/README.md) Task Runner Library. If you are not familiar with the library, please read its [documentation](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/README.md).
+Workflows are collections of steps or what we called chores. These steps are being executed in sequence using [Chores](https://github.com/jnmrclmbsjse/chores/blob/master/README.md) Task Runner Library. If you are not familiar with the library, please read its [documentation](https://github.com/jnmrclmbsjse/chores/blob/master/README.md).
 
 ## Configuring workflows
 
@@ -51,7 +51,7 @@ Now we're all set up, we can look at defining some workflow.
   ]
 }
 ```
-Please see result of the example workflow in this [documentation](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/STEPS.md#walkthrough-examples).
+Please see result of the example workflow in this [documentation](https://github.com/jnmrclmbsjse/chores/blob/master/README.md#walkthrough-examples).
 
 ## Frequently asked questions
 #### What are the available values for options key on steps?
