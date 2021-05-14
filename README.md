@@ -7,7 +7,7 @@ ChoresJS or simply **Chores** is a result of lots task runners available in the 
 ## Concept
 Task runners are in great value when it comes to software development, especially for the automation of concatenating, minifying and other things related to manipulation of files.
 
-So we got the concept of running tasks for the web by having a [workflow](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/WORKFLOW.md) which defines the steps/chores to be executed. We have (4) four core components for a task runner.
+So we got the concept of running tasks for the web by having a [workflow](https://github.com/jnmrclmbsjse/chores/blob/master/docs/WORKFLOW.md) which defines the steps/chores to be executed. We have (4) four core components for a task runner.
 
 1. `tasks` - tasks/jobs to be executed
 2. `task runner` - handles the execution and queuing of tasks
