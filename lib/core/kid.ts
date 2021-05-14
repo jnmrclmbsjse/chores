@@ -29,7 +29,7 @@ class Kid {
         }
         const fun = chore.fun;
 
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             const request = {
                 __mother: mother,
                 options,
