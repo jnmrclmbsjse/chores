@@ -1,6 +1,6 @@
 # Steps
 
-*Steps* or what we called *Chores* are [Workflow](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/WORKFLOW.md)'s main ingredient. Every time the [Chores](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/README.md) library is run, these steps are executed in sequence depending on how we define it for each workflow.
+*Steps* or what we called *Chores* are [Workflow](https://github.com/jnmrclmbsjse/chores/blob/master/docs/WORKFLOW.md)'s main ingredient. Every time the [Chores](https://github.com/jnmrclmbsjse/chores/blob/master/README.md) library is run, these steps are executed in sequence depending on how we define it for each workflow.
 
 
 ## Creating chores
@@ -10,20 +10,18 @@ This documentation explains how to create chores for our app. These chores are .
 
 Please see usage below.
 
-> Note: By default, the steps/chores are defined in [chores](https://gitlab.ph.esl-asia.com/CMS/cashier-fe/blob/chores/) folder.
-
 ### Usage
 
 Let's look on the structure inside the chore file first.
 
-- `key|string` - key that is related to workflow [code](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/WORKFLOW.md#keys)
+- `key|string` - key that is related to workflow [code](https://github.com/jnmrclmbsjse/chores/blob/master/docs/WORKFLOW.md#keys)
 - `description|string` - brief description of the chore
 - `fun|function` - function to define what will the chore do
 
 ### Defining `fun`
 
 The fun function has three main parameters:
--  `request|object` - request object from the defined workflow [step](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/WORKFLOW.md#declaring-steps)
+-  `request|object` - request object from the defined workflow [step](https://github.com/jnmrclmbsjse/chores/blob/master/docs/WORKFLOW.md#declaring-steps)
 -  `response|object` - response object which holds the variables
 -  `callback|object` - callback object which contains:
     - `resolve|function` - if the chore finished successfully — invoke to continue to next chore
@@ -32,7 +30,7 @@ The fun function has three main parameters:
        - `result|any` - the value/object you want to assign to the receiver variable
        - `receiver|string` - the receiver key/variable name
        - `response|object` - the response object above
-       - `name|string` - the [name](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/docs/WORKFLOW.md#keys) of the step from the request object
+       - `name|string` - the [name](https://github.com/jnmrclmbsjse/chores/blob/master/docs/WORKFLOW.md#keys) of the step from the request object
 
 ### Basic CLI Usage
 
@@ -93,7 +91,7 @@ fun: (request, response, callback) => {
     callback.resolve();
 }
 ```
-If we run this via [Chores](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/README.md) library, the result will be something like this:
+If we run this via [Chores](https://github.com/jnmrclmbsjse/chores/blob/master/README.md) library, the result will be something like this:
 
 ```
 {
@@ -114,7 +112,7 @@ fun: (request, response, callback) => {
 }
 ```
 ### Injecting variables to Chores
-Let's say you have Chores library ready. You have to [initialize](https://gitlab.com/jnmrclmbsjse/choresjs/-/blob/master/README.md#walkthrough-example) Chores and inject your variables.
+Let's say you have Chores library ready. You have to [initialize](https://github.com/jnmrclmbsjse/chores/blob/master/README.md#walkthrough-example) Chores and inject your variables.
 ```
 # Initialization of Chores
 var chores = new Chores({
